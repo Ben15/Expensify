@@ -12,8 +12,6 @@ import 'react-dates/lib/css/_datepicker.css'
 
 const store = configureStore();
 
-
-
 const state = store.getState()
 
 const jsx = (
@@ -21,6 +19,5 @@ const jsx = (
         <AppRouter />
     </Provider>
 )
-
 
 ReactDOM.render(jsx , document.getElementById('app'));
