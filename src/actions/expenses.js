@@ -38,3 +38,32 @@ type: 'EDIT_EXPENSE',
 id,
 updates
 })
+
+// SET_EXPENSES
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+})
+
+// export const startSetExpenses;
+export const startSetExpenses = () => {
+        const expenses = []
+
+
+    return (dispatch) => {
+
+        return database.ref('expenses').once('value').then((snapshot) => {
+            
+           snapshot.forEach((childSnapshot) => {
+                expenses.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                })
+                dispatch(setExpenses(expenses))
+            })
+            
+        })
+
+    }
+    
+}
